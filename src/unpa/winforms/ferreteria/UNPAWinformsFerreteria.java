@@ -1,0 +1,98 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package unpa.winforms.ferreteria;
+
+import unpa.winforms.ferreteria.el.Proveedor;
+import unpa.winforms.ferreteria.el.ProveedorTelefono;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Iterator;
+import unpa.winforms.ferreteria.el.Alumno;
+import unpa.winforms.ferreteria.dal.DAL_ProveedorTelefono;
+
+/**
+ *
+ * @author chee <chee_unp@edu.mx>
+ */
+public class UNPAWinformsFerreteria {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws Exception {
+        testUniversity u = new testUniversity();
+        List<Proveedor> listaProveedor = new ArrayList<Proveedor>();
+        List<ProveedorTelefono> listaProveedorTelefono = new ArrayList<ProveedorTelefono>();
+        String idproveedor;
+        Proveedor proveedor = new Proveedor();
+
+        ProveedorTelefono Telefono1 = new ProveedorTelefono();
+        String idProveedor;
+
+//        proveedor.setNombre("FERRE_CHEE");
+//        proveedor.setCalle("Guadalupe Estrada");
+//        proveedor.setColonia("San Antonio");
+//        proveedor.setCiudad("CMDX");
+//        proveedor.setCodigoPostal(68400);
+        //todo esto para insertar un nuevo proveedor y eliminar ello
+        //idProveedor=u.ProveedorAdd(proveedor);
+        //  u.ProveedorAdd(proveedor);
+        //proveedor.setIdProveedor(idProveedor);
+        //  u.PoveedorDelete(proveedor);
+//       //System.out.println(u.ProveedorAdd(proveedor));
+//  //     Telefono1.setIdProveedor(u.ProveedorAdd(proveedor)); 
+//     
+//      Telefono1.setIdProveedor(idProveedor);
+//       Telefono1.setTipoTelefono(proveedor.getTelefonoPersonal());
+//       Telefono1.setLada("044");
+//       Telefono1.setExtension(0);
+//       Telefono1.setNumero("5529674021");
+//       System.out.println(u.ProveedorTelefonoAdd(Telefono1));
+//       
+//       Telefono1.setIdProveedor(idProveedor);
+//       Telefono1.setTipoTelefono(proveedor.getTelefonoCasa());
+//       Telefono1.setLada("045");
+//       Telefono1.setExtension(0);
+//       Telefono1.setNumero("54296741");
+       System.out.println(u.ProveedorTelefonoAdd(Telefono1));
+//       
+//       Telefono1.setIdProveedor(idProveedor);
+//       Telefono1.setTipoTelefono(proveedor.getTelefonoCasa());
+//       Telefono1.setLada("045");
+//       Telefono1.setExtension(3);
+//       Telefono1.setNumero("54296989");
+//       System.out.println(u.ProveedorTelefonoAdd(Telefono1));
+//       
+//       
+   // u.PoveedorTelefonoDelete(Telefono1);
+     // u.PoveedorDelete(proveedor);
+//    
+//        //    listaProveedor=u.ProveedorAllQry();
+//        System.out.print("Proveedor|  ");
+//        System.out.print("Ciudad|  ");
+//        System.out.print("Codigo_Postal| ");
+//        System.out.print("Telefono_Personal|  ");
+//        System.out.print("Telefono_Casa|  ");
+//        System.out.print("Telefono_Oficina|  ");
+//        System.out.println();
+        listaProveedor.addAll(u.ProveedorAllQry());
+        //listaProveedorTelefono.addAll(u.ProveedorTelefonoAllQry());
+        for (int j=0;j<listaProveedor.size();j++) {
+            if(listaProveedor.get(j).getNombre().equals("CAT")){
+                System.out.print(listaProveedor.get(j).getNombre()+"      ");
+                System.out.print(listaProveedor.get(j).getCiudad()+"       ");
+                System.out.print(listaProveedor.get(j).getCodigoPostal()+"        ");
+            for (int i = 0; i < listaProveedorTelefono.size(); i++) {
+                if (listaProveedorTelefono.get(i).getIdProveedor().equals(listaProveedor.get(j).getIdProveedor())) {
+               //     System.out.print(listaProveedorTelefono.get(i).getNumero()+"          "); 
+                }
+            }
+            }
+
+        }
+    }
+
+}
