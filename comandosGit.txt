@@ -1,2 +1,5 @@
 #Cambiar el control remoto existente:
 git remote set-url  origin "url del repositorio que se quiere tomar el control"
+
+#Ver la url del control remoto actual
+git remote -v

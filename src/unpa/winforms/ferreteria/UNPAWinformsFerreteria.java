@@ -32,46 +32,50 @@ public class UNPAWinformsFerreteria {
         ProveedorTelefono Telefono1 = new ProveedorTelefono();
         String idProveedor;
 
-//        proveedor.setNombre("FERRE_CHEE");
+        proveedor.setNombre("FERRE_CHEE");
           /***Tabla direccion**/
-//        proveedor.setCalle("Guadalupe Estrada");
-//        proveedor.setColonia("San Antonio");
-//        proveedor.setCiudad("CMDX");
-//        proveedor.setCodigoPostal(68400);
+        proveedor.setCalle("Guadalupe Estrada");
+        proveedor.setColonia("San Antonio");
+        proveedor.setCiudad("CMDX");
+        proveedor.setCodigoPostal(68400);
         //todo esto para insertar un nuevo proveedor y eliminar ello
-        //idProveedor=u.ProveedorAdd(proveedor);
-        //  u.ProveedorAdd(proveedor);
-        //proveedor.setIdProveedor(idProveedor);
-        //  u.PoveedorDelete(proveedor);
-//       //System.out.println(u.ProveedorAdd(proveedor));
-//  //     Telefono1.setIdProveedor(u.ProveedorAdd(proveedor)); 
-//     
-//      Telefono1.setIdProveedor(idProveedor);
-//       Telefono1.setTipoTelefono(proveedor.getTelefonoPersonal());
-//       Telefono1.setLada("044");
-//       Telefono1.setExtension(0);
-//       Telefono1.setNumero("5529674021");
-//       System.out.println(u.ProveedorTelefonoAdd(Telefono1));
-//       
-//       Telefono1.setIdProveedor(idProveedor);
-//       Telefono1.setTipoTelefono(proveedor.getTelefonoCasa());
-//       Telefono1.setLada("045");
-//       Telefono1.setExtension(0);
-//       Telefono1.setNumero("54296741");
+        idProveedor=u.ProveedorAdd(proveedor);//toma el idProveedor que se inserto para poder insertar su telefono con su id
+      //  u.ProveedorAdd(proveedor);
+      //  proveedor.setIdProveedor(idProveedor);
+        //u.PoveedorDelete(proveedor);
+       // System.out.println(u.ProveedorAdd(proveedor));
+        System.out.println("idProveedor: "+idProveedor);
+       // Telefono1.setIdProveedor(u.ProveedorAdd(proveedor)); 
+       
+//     /*INSERTAR EL PRIMER TELEFONO DEL PROVEEDOR*/
+      Telefono1.setIdProveedor(idProveedor);
+      Telefono1.setTipoTelefono(proveedor.getTelefonoPersonal());
+       Telefono1.setLada("044");
+       Telefono1.setExtension(0);
+       Telefono1.setNumero("5529674021");
        System.out.println(u.ProveedorTelefonoAdd(Telefono1));
-//       
-//       Telefono1.setIdProveedor(idProveedor);
-//       Telefono1.setTipoTelefono(proveedor.getTelefonoCasa());
-//       Telefono1.setLada("045");
-//       Telefono1.setExtension(3);
-//       Telefono1.setNumero("54296989");
-//       System.out.println(u.ProveedorTelefonoAdd(Telefono1));
+       
+//        /*INSERTAR EL SEGUNDO TELEFONO DEL PROVEEDOR*/
+       Telefono1.setIdProveedor(idProveedor);
+       Telefono1.setTipoTelefono(proveedor.getTelefonoCasa());
+       Telefono1.setLada("045");
+       Telefono1.setExtension(0);
+       Telefono1.setNumero("54296741");
+       System.out.println(u.ProveedorTelefonoAdd(Telefono1));
+       
+//        /*INSERTAR EL TERCER TELEFONO DEL PROVEEDOR*/
+       Telefono1.setIdProveedor(idProveedor);
+       Telefono1.setTipoTelefono(proveedor.getTelefonoOficina());
+       Telefono1.setLada("045");
+       Telefono1.setExtension(3);
+       Telefono1.setNumero("54296989");
+       System.out.println(u.ProveedorTelefonoAdd(Telefono1));
 //       
 //       
    // u.PoveedorTelefonoDelete(Telefono1);
      // u.PoveedorDelete(proveedor);
 //    
-//        //    listaProveedor=u.ProveedorAllQry();
+//    listaProveedor=u.ProveedorAllQry();
 //        System.out.print("Proveedor|  ");
 //        System.out.print("Ciudad|  ");
 //        System.out.print("Codigo_Postal| ");
@@ -79,6 +83,7 @@ public class UNPAWinformsFerreteria {
 //        System.out.print("Telefono_Casa|  ");
 //        System.out.print("Telefono_Oficina|  ");
 //        System.out.println();
+ /*
         listaProveedor.addAll(u.ProveedorAllQry());
         //listaProveedorTelefono.addAll(u.ProveedorTelefonoAllQry());
         for (int j=0;j<listaProveedor.size();j++) {
@@ -93,7 +98,7 @@ public class UNPAWinformsFerreteria {
             }
             }
 
-        }
+        }*/
     }
 
 }
