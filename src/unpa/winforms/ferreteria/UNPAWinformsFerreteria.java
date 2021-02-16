@@ -23,16 +23,17 @@ public class UNPAWinformsFerreteria {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        testUniversity u = new testUniversity();
+        testUniversity u = new testUniversity();//para hacer uso de sus metodos como add, query, update,  delete
         List<Proveedor> listaProveedor = new ArrayList<Proveedor>();
         List<ProveedorTelefono> listaProveedorTelefono = new ArrayList<ProveedorTelefono>();
         String idproveedor;
-        Proveedor proveedor = new Proveedor();
+        Proveedor proveedor = new Proveedor();//creando un objeto proveedor para insertar a la base de datos
 
         ProveedorTelefono Telefono1 = new ProveedorTelefono();
         String idProveedor;
 
 //        proveedor.setNombre("FERRE_CHEE");
+          /***Tabla direccion**/
 //        proveedor.setCalle("Guadalupe Estrada");
 //        proveedor.setColonia("San Antonio");
 //        proveedor.setCiudad("CMDX");

@@ -32,11 +32,7 @@ public class ProveedorTelefono {
    
     public void ProveedorTelefono() {
         
-    }
-    
-    
-
-    
+    }   
     
     
     public String getIdProveedorTelefono() {

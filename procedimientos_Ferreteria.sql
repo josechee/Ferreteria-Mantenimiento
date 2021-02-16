@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS unpa;
 CREATE DATABASE unpa;
 use unpa;
 
-
+/*
 -- ----------------PROCEDIMIENTOS TIPO TELEFONO--------------------------
 CREATE TABLE tbl_TipoTelefono(
 		ID_TipoTelefono INT NOT NULL,
@@ -786,6 +786,8 @@ DELIMITER ;
 
 SET @_ID_Proveedor = ' ';
 
+
+
 -- call unpa.Producto_Insertar_SP('Truper','Guadalupe Vectoria','Portales','CDMX',68400,@_ID_Proveedor);
 
 -- -------------------------------------------------
@@ -1251,7 +1253,7 @@ call Empleado_Telefono_Eliminar_SP('99aa2c3c-7d97-11e8-ad57-28d244202eee');
 
 
 
--- -----------ELIMINAR TELEFONO---------------------------
+-- -----------ELIMINAR TELEFONO Proveedor---------------------------
 
 DROP PROCEDURE IF EXISTS Telefono_Eliminar_SP;
 
@@ -1349,3 +1351,5 @@ call Empleado_Eliminar_SP('9fc223ad-7cad-11e8-bf9d-28d244202eee');
 
 call Empleado_Consultar_SP('f2053fed');
 CALL Usuario_Consultar_SP('0192b359-7cc6-11e8-9c3d-28d244202eee');
+
+*/
