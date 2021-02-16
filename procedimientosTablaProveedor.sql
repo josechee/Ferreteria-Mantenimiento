@@ -143,7 +143,8 @@ CREATE TABLE tbl_ProveedorTelefono(
 );
 
 -- 2. consultar telefono del proveedor de la tabla del proveedor [tbl_Proveedor]
-DROP PROCEDURE IF EXISTS Proveedor_ConsultarTelefono_SP;
+-- este solo me regresa un 1 por el select 1
+DROP PROCEDURE IF EXISTS Proveedor_ConsultarTelefono_SP; 
 DELIMITER //
 CREATE PROCEDURE Proveedor_ConsultarTelefono_SP(IN In_ID_Proveedor VARCHAR(36))
         
@@ -154,7 +155,9 @@ SELECT  * FROM tbl_Proveedor
 END//
 DELIMITER ;
 
+##call Proveedor_ConsultarTelefono_SP('7973f5f9-7007-11eb-b5d2-28d244202eee');
 -- 3. consultar telefono del proveedor de la tabla del proveedor telefono [tbl_ProveedorTelefono]
+##Este si me regresa los tres telefonos del proveedor con el ID_Proveedor
 DROP PROCEDURE IF EXISTS ProveedorTelefono_Consultar_SP;
 DELIMITER //
 CREATE PROCEDURE ProveedorTelefono_Consultar_SP(IN In_ID_Proveedor VARCHAR(36))
@@ -165,6 +168,8 @@ BEGIN
         
 END//
 DELIMITER ;
+
+-- call ProveedorTelefono_Consultar_SP('7973f5f9-7007-11eb-b5d2-28d244202eee');
 
 -- 4. actualizar telefono del proveedor
 DROP PROCEDURE IF EXISTS ProveedorTelefono_Actualizar_SP;
