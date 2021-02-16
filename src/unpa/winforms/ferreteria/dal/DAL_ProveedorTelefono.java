@@ -260,8 +260,8 @@ public class DAL_ProveedorTelefono {
         
         List <ProveedorTelefono> listaProveedoTelefono = new ArrayList<ProveedorTelefono>();        
         try {
-            cstmt = this.dbCon.prepareCall("{call tbl_consultarProveedorTelefono(?)}", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            cstmt.setString("In_ID_Proveedor", IdProveedor);
+            cstmt = this.dbCon.prepareCall("{call ProveedorTelefono_Consultar_SP(?)}", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            cstmt.setString("In_ID_Proveedor", IdProveedor);//call queryProveedorTelefonoToDatabase
             boolean results = cstmt.execute();
             int rowsAffected = 0;
 
@@ -280,7 +280,8 @@ public class DAL_ProveedorTelefono {
                 this.proveedorTelefono = new ProveedorTelefono();
                 this.proveedorTelefono.setIdProveedorTelefono(rs.getString("ID_ProveedorTelefono"));
                 this.proveedorTelefono.setIdProveedor(rs.getString("ID_Proveedor"));
-                this.proveedorTelefono.setDescripcionTelefono(rs.getString("Descripcion"));
+                //this.proveedorTelefono.setDescripcionTelefono(rs.getString("Descripcion")); //esto estaba antes
+                this.proveedorTelefono.setTipoTelefono(rs.getInt("ID_TipoTelefono"));//esto agrego modificado el de arriba
                 this.proveedorTelefono.setLada(rs.getString("Lada"));
                 this.proveedorTelefono.setExtension(rs.getInt("Extension"));
                 this.proveedorTelefono.setNumero(rs.getString("Numero"));
