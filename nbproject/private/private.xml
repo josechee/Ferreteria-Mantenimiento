@@ -3,9 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/bll/BLL_Proveedor.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/el/TipoTelefono.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/el/ProveedorTelefono.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/bll/BLL_ProveedorTelefono.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/dal/DAL_Empleado.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/FrmProveedor.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/testing.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/util/DbUtil.java</file>
             <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/UNPAWinformsFerreteria.java</file>
-            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/FrmAlumno.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/dal/DAL_Proveedor.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/testUniversity.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/bll/BLL_Alumno.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/bll/BLL_Empleado.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/bll/BLL_Usuario.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/dal/DAL_ProveedorTelefono.java</file>
             <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/FrmVenta.java</file>
+            <file>file:/C:/Users/PC/Desktop/ESCRITORIO/4to%20Semestre/BASES%20DE%20DATOS/2DO%20PARCIAL/UNPA.Winforms.Ferreteria/src/unpa/winforms/ferreteria/el/Proveedor.java</file>
         </group>
     </open-files>
 </project-private>
