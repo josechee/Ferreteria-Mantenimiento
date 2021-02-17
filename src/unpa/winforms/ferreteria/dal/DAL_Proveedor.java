@@ -75,6 +75,45 @@ public class DAL_Proveedor {
         return verificador;//retorna el id del Proveedor
 
     }
+    ///Este metodo obtiene al Proveedor de la base de datos por medio de su nombre
+    public Proveedor queryProveedorForNameToDatabase(String nombreProveedor) {
+        CallableStatement cstmt = null;
+        ResultSet rs = null;
+        int verificador = 0;
+        try {
+            cstmt = this.dbCon.prepareCall("{call Proveedor_ConsultarConNombre_SP(?)}", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            cstmt.setString("In_Nombre_Proveedor", nombreProveedor);
+            boolean results = cstmt.execute();
+            int rowsAffected = 0;
+
+            while (results || rowsAffected != -1) {
+                if (results) {
+                    rs = cstmt.getResultSet();
+                    break;
+                } else {
+                    rowsAffected = cstmt.getUpdateCount();
+                }
+                results = cstmt.getMoreResults();
+
+            }
+
+            if (rs.next()) {//aqui no entrea
+                this.proveedor = new Proveedor();
+                this.proveedor.setIdProveedor(rs.getString("ID_Proveedor"));
+                this.proveedor.setNombre(rs.getString("Nombre"));
+                this.proveedor.setCalle(rs.getString("Calle"));
+                this.proveedor.setColonia(rs.getString("Colonia"));
+                this.proveedor.setCiudad(rs.getString("Ciudad"));
+                this.proveedor.setCodigoPostal(rs.getInt("CodigoPostal"));
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to add the record: " + e.toString());
+            return this.proveedor;
+        }
+        return this.proveedor;
+    }
+    
 
     public Proveedor queryProveedorToDatabase() {
         CallableStatement cstmt = null;

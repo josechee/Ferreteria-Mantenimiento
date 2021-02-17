@@ -11,7 +11,7 @@ CREATE TABLE tbl_Proveedor(
         PRIMARY KEY (ID_Proveedor)
 );
 
--- 1. consultar proveedor
+-- 1. consultar proveedor lo consulta solo con los 8 digitos
 DROP PROCEDURE IF EXISTS Proveedor_Consultar_SP;
 DELIMITER //
 CREATE PROCEDURE Proveedor_Consultar_SP(IN In_ID_Proveedor VARCHAR(8))
@@ -24,7 +24,24 @@ BEGIN
 END//
 DELIMITER ;
 
+-- call Proveedor_Consultar_SP('7973f5f9'); 
 
+-- 1.1. consultar proveedor por nombre
+DROP PROCEDURE IF EXISTS Proveedor_ConsultarConNombre_SP;
+DELIMITER //
+CREATE PROCEDURE Proveedor_ConsultarConNombre_SP(IN In_Nombre_Proveedor VARCHAR(45))
+        
+BEGIN
+ SET @IdUsuario = In_Nombre_Proveedor; 
+ -- SELECT concat_ws('', @IdUsuario, "%");        
+ SELECT * FROM tbl_Proveedor WHERE Nombre like concat_ws('', @IdUsuario, "%");
+ SELECT 1;       
+END//
+DELIMITER ;
+
+ call Proveedor_ConsultarConNombre_SP('FERRE_CHEE');
+
+-- ----------------------------------------------------------------
 -- 3. actualizar datos del proveedor
 DROP PROCEDURE IF EXISTS tbl_Proveedor_Actualizar_SP;
 DELIMITER //
@@ -171,7 +188,28 @@ DELIMITER ;
 
 -- call ProveedorTelefono_Consultar_SP('7973f5f9-7007-11eb-b5d2-28d244202eee');
 
--- 4. actualizar telefono del proveedor
+-- 4 consultar a todos los proveedores
+DROP PROCEDURE IF EXISTS Proveedor_ConsultarTodo_SP;
+
+DELIMITER //
+CREATE PROCEDURE Proveedor_ConsultarTodo_SP()
+BEGIN  
+     SELECT 
+		ID_Proveedor,
+		Nombre,
+     	Calle,
+        Colonia,
+        Ciudad ,
+        CodigoPostal
+	 FROM
+	   tbl_proveedor;
+       
+END//
+DELIMITER ;
+
+call Proveedor_ConsultarTodo_SP();
+
+-- 5. actualizar telefono del proveedor
 DROP PROCEDURE IF EXISTS ProveedorTelefono_Actualizar_SP;
 DELIMITER //
 CREATE PROCEDURE ProveedorTelefono_Actualizar_SP(
@@ -192,7 +230,8 @@ SELECT 1;
 END //
 DELIMITER ;
 
--- 5. insertar telefono del proveedor
+
+-- 6. insertar telefono del proveedor
 DROP PROCEDURE IF EXISTS ProveedorTelefono_Insertar_SP;
 DELIMITER //
 CREATE PROCEDURE ProveedorTelefono_Insertar_SP(
@@ -230,7 +269,7 @@ SELECT indicador;
 END //
 DELIMITER ;
 
--- 6. eliminar telefono del proveedor
+-- 7. eliminar telefono del proveedor
 DROP PROCEDURE IF EXISTS ProveedorTelefono_Eliminar_SP;
 
 DELIMITER //

@@ -27,6 +27,15 @@ public class BLL_Proveedor {
         }
     }    
     
+    public Proveedor QueryProveedorForNameDataBase(Connection dbCon, String nombreProveedor) throws Exception {
+        try {
+            DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, null);
+            return dal_proveedor.queryProveedorForNameToDatabase(nombreProveedor);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+    
     public Proveedor QueryDataBase(Connection dbCon, Proveedor proveedor) throws Exception {
         try {
             DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, proveedor);

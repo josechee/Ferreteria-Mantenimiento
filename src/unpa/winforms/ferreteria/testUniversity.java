@@ -111,6 +111,17 @@ public testUniversity() {
         // int verificador = DAL_alumno.addToDataBase();       // esto es por la instancia que se
         return verificador;
     }
+    
+    public Proveedor ProveedorQryPorNombre(String nombreProveedor) throws Exception {
+
+        //DAL_Alumno DAL_alumno = new DAL_Alumno(dbCon,_alumno);
+        BLL_Proveedor bbl_Proveedor = new BLL_Proveedor();
+        return bbl_Proveedor.QueryProveedorForNameDataBase(dbCon,nombreProveedor);
+        //System.out.println("Verificador :" + alumno.getMatricula() + "\n");
+
+        // int verificador = DAL_alumno.addToDataBase();       // esto es por la instancia que se
+        //return _proveedor;
+    }
 
     public Proveedor ProveedorQry(Proveedor _proveedor) throws Exception {
 
@@ -148,7 +159,7 @@ public testUniversity() {
         //DAL_Alumno DAL_alumno = new DAL_Alumno(dbCon,_alumno);
         BLL_Proveedor bbl_Proveedor = new BLL_Proveedor();
         int verificador = bbl_Proveedor.deleteProveedorDatabase(dbCon, _proveedor);
-        System.out.println("Verificador :" + verificador + "\n");
+        System.out.println("Proveedor_Eliminar_SP | Verificador :" + verificador + "\n");
 
         // int verificador = DAL_alumno.addToDataBase();       // esto es por la instancia que se
         return verificador;

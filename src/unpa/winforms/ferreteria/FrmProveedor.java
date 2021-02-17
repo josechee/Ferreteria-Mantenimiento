@@ -293,7 +293,7 @@ public class FrmProveedor extends javax.swing.JFrame {
         try {
             this.consultar();
             // this.obtenerTodosLosProveedor("311c89e9-70c7-11e8-9efa-28d244202eee");
-         //   this.txtExtension.setText("");
+            //   this.txtExtension.setText("");
         } catch (Exception ex) {
             Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -394,7 +394,7 @@ public class FrmProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumero;
     // End of variables declaration//GEN-END:variables
-  
+
     private ModeloTablaProveedor modelo = null;
     private FrmProveedor padre;
     testUniversity testuniversity = null;
@@ -404,13 +404,11 @@ public class FrmProveedor extends javax.swing.JFrame {
     BLL_ProveedorTelefono bbl_ProveedorTelefono = new BLL_ProveedorTelefono();
     ProveedorTelefono proveedorTelefono = null;
     private Connection dbCon;
-    
+
     testUniversity u = new testUniversity();
     LinkedList listaTelefonoProveedor = new LinkedList();
     private String idProveedorTelefono;
-    
-    
-    
+
     public FrmProveedor() {
         initComponents();
         this.Init();
@@ -565,7 +563,7 @@ public class FrmProveedor extends javax.swing.JFrame {
 
         if (this.LlenarAtributos()) {
 
-            idProveedorAux = u.ProveedorAdd(proveedor);//aqui recupero mi matricula del procedimiento
+            idProveedorAux = u.ProveedorAdd(proveedor);//aqui recupero mi id del procedimiento
             System.out.println("id recuperado = " + this.idProveedorAux);
             if (this.LlenarAtributosTelefono()) {
                 verificador = bbl_ProveedorTelefono.AddToDataBaseProveedorTelefono(dbCon, proveedorTelefono);
