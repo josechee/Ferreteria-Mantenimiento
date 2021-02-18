@@ -72,15 +72,15 @@ public class UNPAWinformsFerreteria {
         Telefono1.setLada("045");
         Telefono1.setExtension(3);
         Telefono1.setNumero("54296989");
-        
+
         System.out.println(u.ProveedorTelefonoAdd(Telefono1));
-        
+
 //       
 //       
-        // u.PoveedorTelefonoDelete(Telefono1);
-        // u.PoveedorDelete(proveedor);
+        // u.PoveedorTelefonoDelete(Telefono1);/*Primero se elimina telefonoProveedor [por su idProveedor]*/
+        // u.PoveedorDelete(proveedor);/*Posteriormente se elimina el proveedor [con su idProveedor]*/
 //    
-    listaProveedor=u.ProveedorAllQry();
+        listaProveedor = u.ProveedorAllQry();
 //        System.out.print("Proveedor|  ");
 //        System.out.print("Ciudad|  ");
 //        System.out.print("Codigo_Postal| ");

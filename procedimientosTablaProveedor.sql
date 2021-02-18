@@ -35,7 +35,7 @@ BEGIN
  SET @IdUsuario = In_Nombre_Proveedor; 
  -- SELECT concat_ws('', @IdUsuario, "%");        
  SELECT * FROM tbl_Proveedor WHERE Nombre like concat_ws('', @IdUsuario, "%");
- SELECT 1;       
+ -- SELECT 1;       
 END//
 DELIMITER ;
 

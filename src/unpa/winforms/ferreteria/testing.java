@@ -68,9 +68,16 @@ public class testing {
        // proveedor = tester.ProveedorQry(proveedor);//query solo con los primeros 8 numeros del idProveedor; mandando al objeto Proveedor
         //proveedor = tester.ProveedorQry("7973f5f9");//query pasando el idProveedor peroe ste debe ser de longitud 8 (los primeros 8 digitos del idProveedor)
         
-        proveedor=tester.ProveedorQryPorNombre("FERRE CHEE");//CHECAR ESTA PARTE 
+        proveedor=tester.ProveedorQryPorNombre("FERRE_CHEE1");//CHECAR ESTA PARTE 
         
-        System.out.println(proveedor.getNombre());
+        if(proveedor.getIdProveedor()!=null){            
+            System.out.print("Nombre del proveedor: ");
+            System.out.println(proveedor.getNombre());
+        }else{
+            System.out.println("No existe el usuario con ese nombre");
+        }
+        
+        
         
     }
     

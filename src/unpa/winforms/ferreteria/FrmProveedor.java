@@ -627,13 +627,30 @@ public class FrmProveedor extends javax.swing.JFrame {
         }
     }
 
+    
+    
+    
     public void actalizarTelefono() throws Exception {
         int verificador = 0;
         int indiceCombox = this.jComboxTelefono.getSelectedIndex();
-
+        System.out.println("indiceCombox:   " + indiceCombox);
+       
         bbl_ProveedorTelefono = new BLL_ProveedorTelefono();
         proveedorTelefono = new ProveedorTelefono();
         this.proveedorTelefono = (ProveedorTelefono) (this.listaTelefonoProveedor.get(indiceCombox));
+        
+//aqui creo que no se le esta enviando el idTelefonoProveedor que se va a modificar
+        ProveedorTelefono proveedorTest = new ProveedorTelefono();//apenas se creo
+        proveedorTest = (ProveedorTelefono) this.listaTelefonoProveedor.get(indiceCombox);
+        //el indice del test
+        // System.out.println("this.proveedorTelefono.getTipoTelefono():  "+test.getTipoTelefono());
+        // System.out.println("(this.listaTelefonoProveedor.get(indiceCombox))  "+ this.listaTelefonoProveedor.get(indiceCombox).toString());
+        System.out.println("tamanio listaTelefonoProveedor:  " + this.listaTelefonoProveedor.size());
+        System.out.println("Tipo de telefono Seleccionado:  "+proveedorTest.getTipoTelefono());
+        System.out.println("Lada del telefono Seleccionado:  "+proveedorTest.getLada());
+        System.out.println("Extension del telefono Seleccionado:  "+proveedorTest.getExtension());
+        System.out.println("Numero telefono Seleccionado:  "+proveedorTest.getNumero());
+        
         proveedorTelefono.setIdProveedor(proveedor.getIdProveedor());
         if (this.LlenarAtributosTelefono()) {
             verificador = bbl_ProveedorTelefono.updateProveedorTelefonoDatabase(dbCon, proveedorTelefono);
