@@ -72,7 +72,7 @@ public class PruebasConsola {
         //System.out.println(fecha.getTime());
 //        System.out.println(fecha.getTime().toString());
         String s;
-        s=fecha.getTime().toString();
+        s = fecha.getTime().toString();
         System.out.println(s);
     }
 }

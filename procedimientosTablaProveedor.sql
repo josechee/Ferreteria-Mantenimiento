@@ -24,7 +24,7 @@ BEGIN
 END//
 DELIMITER ;
 
--- call Proveedor_Consultar_SP('7973f5f9'); 
+ call Proveedor_Consultar_SP('7973f5f9'); 
 
 -- 1.1. consultar proveedor por nombre
 DROP PROCEDURE IF EXISTS Proveedor_ConsultarConNombre_SP;
@@ -34,12 +34,12 @@ CREATE PROCEDURE Proveedor_ConsultarConNombre_SP(IN In_Nombre_Proveedor VARCHAR(
 BEGIN
  SET @IdUsuario = In_Nombre_Proveedor; 
  -- SELECT concat_ws('', @IdUsuario, "%");        
- SELECT * FROM tbl_Proveedor WHERE Nombre like concat_ws('', @IdUsuario, "%");
+ SELECT * FROM tbl_Proveedor WHERE Nombre = In_Nombre_Proveedor;
  -- SELECT 1;       
 END//
 DELIMITER ;
 
- call Proveedor_ConsultarConNombre_SP('FERRE_CHEE');
+ -- call Proveedor_ConsultarConNombre_SP('FERRE_CHEE');
 
 -- ----------------------------------------------------------------
 -- 3. actualizar datos del proveedor
@@ -282,3 +282,19 @@ BEGIN
     SELECT 1;
 END //
 DELIMITER ;
+
+-- 8. 
+DROP PROCEDURE IF EXISTS EliminarTelefonoProveedor_SP;
+
+DELIMITER //
+CREATE PROCEDURE EliminarTelefonoProveedor_SP(IN In_ID_Proveedor_Telefono VARCHAR(36))
+BEGIN 
+	
+    DELETE FROM tbl_ProveedorTelefono 
+	WHERE ID_ProveedorTelefono = In_ID_Proveedor_Telefono; 
+	
+    SELECT 1;
+END //
+DELIMITER ;
+
+

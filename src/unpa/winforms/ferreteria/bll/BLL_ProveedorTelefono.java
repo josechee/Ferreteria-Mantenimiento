@@ -19,9 +19,9 @@ import unpa.winforms.ferreteria.dal.DAL_ProveedorTelefono;
  * @author chee <chee_unp@edu.mx>
  */
 public class BLL_ProveedorTelefono {
-        
-    
-    public int  AddToDataBaseProveedorTelefono(Connection dbCon, ProveedorTelefono proveedor) throws Exception {
+
+    //AGREGAR UN NUEVO TELEFONO DEL PROVEEDOR, A PARTIR DEL ID DEL PROVEEDOR
+    public int AddToDataBaseProveedorTelefono(Connection dbCon, ProveedorTelefono proveedor) throws Exception {
         try {
             DAL_ProveedorTelefono dal_proveedorTelefono = new DAL_ProveedorTelefono(dbCon, proveedor);
             return dal_proveedorTelefono.addProveedorTelefonoToDataBase();
@@ -29,8 +29,8 @@ public class BLL_ProveedorTelefono {
             throw ex;
         }
     }
-    
-    
+
+    //ELIMINA TODOS LOS TELEFONOS DEL PROVEEDOR, A PARTIR DEL ID DEL PROVEEDOR
     public int deletProveedorDatabase(Connection dbCon, ProveedorTelefono proveedorTelefono) throws Exception {
         try {
             DAL_ProveedorTelefono dal_proveedorTelefono = new DAL_ProveedorTelefono(dbCon, proveedorTelefono);
@@ -39,9 +39,9 @@ public class BLL_ProveedorTelefono {
             throw ex;
         }
     }
-    
-    
-      public List<ProveedorTelefono> QueryProveedorTelefonoAllDataBase(Connection dbCon,String idProveedor) throws Exception {
+
+    //OBTIENE TODOS LOS TELEFONOS DEL PROVEDOR, A PARTIR DEL ID DEL PROVEEDOR
+    public List<ProveedorTelefono> QueryProveedorTelefonoAllDataBase(Connection dbCon, String idProveedor) throws Exception {
         try {
             DAL_ProveedorTelefono dal_proveedorTelefono = new DAL_ProveedorTelefono(dbCon, null);
             return dal_proveedorTelefono.queryProveedorTelefonoToDatabase(idProveedor);
@@ -49,8 +49,9 @@ public class BLL_ProveedorTelefono {
             throw ex;
         }
     }
-    
-     public List<ProveedorTelefono> QueryProveedorTelefonoDataBase(Connection dbCon,String idProveedor) throws Exception {
+
+    //OBTIENE TODOS LOS TELEFONOS DEL PROVEDOR, A PARTIR DEL ID DEL PROVEEDOR
+    public List<ProveedorTelefono> QueryProveedorTelefonoDataBase(Connection dbCon, String idProveedor) throws Exception {
         try {
             DAL_ProveedorTelefono dal_proveedorTelefono = new DAL_ProveedorTelefono(dbCon, null);
             return dal_proveedorTelefono.queryProveedorTelefonoToDatabase(idProveedor);
@@ -58,9 +59,9 @@ public class BLL_ProveedorTelefono {
             throw ex;
         }
     }
-     
-     
-     public int deleteProveedorTelefonoDatabase(Connection dbCon, Proveedor proveedor) throws Exception {
+
+    //ELIMINA TODOS LOS TELEDONOS DEL PROVEEDOR, A PARTIR DEL ID DEL PROVEEDOR
+    public int deleteProveedorTelefonoDatabase(Connection dbCon, Proveedor proveedor) throws Exception {
         try {
             DAL_ProveedorTelefono dal_proveedorTelefono = new DAL_ProveedorTelefono(dbCon, null);
             return dal_proveedorTelefono.delete_ProveedorTelefono(proveedor);
@@ -68,9 +69,9 @@ public class BLL_ProveedorTelefono {
             throw ex;
         }
     }
-     
-     
-     public int deleteTelefonoDatabase(Connection dbCon, ProveedorTelefono proveedorTelefono) throws Exception {
+
+    //ELIMINA UN NUMERO EN ESPECIFICO DEL PROVEEDOR, A PARTIR DEL ID DEL TELEFONO A ELIMINAR
+    public int deleteTelefonoDatabase(Connection dbCon, ProveedorTelefono proveedorTelefono) throws Exception {
         try {
             DAL_ProveedorTelefono dal_proveedorTelefono = new DAL_ProveedorTelefono(dbCon, proveedorTelefono);
             return dal_proveedorTelefono.delete_Telefono();
@@ -78,9 +79,9 @@ public class BLL_ProveedorTelefono {
             throw ex;
         }
     }
-     
-     
-     public int updateProveedorTelefonoDatabase(Connection dbCon, ProveedorTelefono proveedorTelefono) throws Exception {
+
+    //ACTUALIZA LOS DATOS DEL TELEFONO EN ESPECIFICO, A PARTIR DEL ID DEL TELEFONO A ACTUALIZARSE
+    public int updateProveedorTelefonoDatabase(Connection dbCon, ProveedorTelefono proveedorTelefono) throws Exception {
         try {
             DAL_ProveedorTelefono dal_proveedorTelefono = new DAL_ProveedorTelefono(dbCon, proveedorTelefono);
             return dal_proveedorTelefono.updateProveedorTelefonoToDataBase();
@@ -88,6 +89,5 @@ public class BLL_ProveedorTelefono {
             throw ex;
         }
     }
-     
-    
+
 }

@@ -5,14 +5,21 @@
  */
 package unpa.winforms.ferreteria;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import unpa.winforms.ferreteria.el.ModeloTablaProveedor;
 import unpa.winforms.ferreteria.el.Proveedor;
 import unpa.winforms.ferreteria.el.ProveedorTelefono;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 import unpa.winforms.ferreteria.bll.BLL_Proveedor;
 import unpa.winforms.ferreteria.bll.BLL_ProveedorTelefono;
 import unpa.winforms.ferreteria.dal.DAL_Proveedor;
@@ -50,14 +57,10 @@ public class FrmProveedor extends javax.swing.JFrame {
         txtCodigoPostal = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtIdProveedor = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaProveedor = new javax.swing.JTable();
         jComboxTelefono = new javax.swing.JComboBox<>();
         txtLada = new javax.swing.JTextField();
         txtExtension = new javax.swing.JTextField();
@@ -65,6 +68,15 @@ public class FrmProveedor extends javax.swing.JFrame {
         btnRegistrarTelefono = new javax.swing.JButton();
         btnActualizarTelefono = new javax.swing.JButton();
         btnEliminarTelefono = new javax.swing.JButton();
+        lblTipoTelefono = new javax.swing.JLabel();
+        lblLada = new javax.swing.JLabel();
+        lblExtension = new javax.swing.JLabel();
+        lblNumero = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaProveedor = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        lblProveedores = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Datos Proveedor:");
@@ -82,7 +94,7 @@ public class FrmProveedor extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 290, 40));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 190, 30));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Direccion:"));
         jPanel2.setToolTipText("Direccion:");
@@ -117,48 +129,45 @@ public class FrmProveedor extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtColonia)
-                            .addComponent(txtCalle)
-                            .addComponent(txtCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtColonia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                            .addComponent(txtCalle, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCiudad)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtColonia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11))
+                .addGap(21, 21, 21))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 450, 250));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 380, 260));
 
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setText("Registrar Proveedor");
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegistrarMouseClicked(evt);
@@ -169,31 +178,15 @@ public class FrmProveedor extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, -1, -1));
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 555, -1, -1));
 
-        btnConsultar.setText("Consultar");
+        btnConsultar.setText("Consultar Proveedor");
         btnConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnConsultarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 590, -1, -1));
-
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnActualizarMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 590, -1, -1));
-
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 590, -1, -1));
+        jPanel1.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, -1));
 
         btnCerrar.setText("Cerrar");
         btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,30 +199,15 @@ public class FrmProveedor extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 600, -1, -1));
+        jPanel1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 555, -1, -1));
 
         jLabel6.setText("ID Proveedor:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 90, 20));
-        jPanel1.add(txtIdProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 290, 40));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 90, 20));
+        jPanel1.add(txtIdProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 190, 30));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Telefono:"));
         jPanel3.setToolTipText("");
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tablaProveedor.setBorder(new javax.swing.border.MatteBorder(null));
-        tablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Tipo_Telefono", "Lada", "Extension", "Numero"
-            }
-        ));
-        jScrollPane2.setViewportView(tablaProveedor);
-
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 510, 20));
 
         jComboxTelefono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personal", "Casa", "Oficina" }));
         jPanel3.add(jComboxTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 30));
@@ -266,9 +244,54 @@ public class FrmProveedor extends javax.swing.JFrame {
         });
         jPanel3.add(btnEliminarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 540, 160));
+        lblTipoTelefono.setText("Tipo Telefono:");
+        jPanel3.add(lblTipoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 570, 650));
+        lblLada.setText("Lada:");
+        jPanel3.add(lblLada, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 44, -1, -1));
+
+        lblExtension.setText("Extension:");
+        jPanel3.add(lblExtension, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 44, -1, -1));
+
+        lblNumero.setText("Numero:");
+        jPanel3.add(lblNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 44, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 540, 160));
+
+        tablaProveedor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID del proveedor", "Nombre del proveedor"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaProveedor);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 300, 240));
+
+        btnActualizar.setText("Actualizar Proveedor");
+        btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 555, -1, -1));
+
+        btnEliminar.setText("Eliminar Proveedor");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 555, 140, -1));
+
+        lblProveedores.setText("Proveedores actuales:");
+        jPanel1.add(lblProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 140, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 740, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -291,9 +314,11 @@ public class FrmProveedor extends javax.swing.JFrame {
 
     private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
         try {
-            this.consultar();
-            // this.obtenerTodosLosProveedor("311c89e9-70c7-11e8-9efa-28d244202eee");
-            //   this.txtExtension.setText("");
+            if (this.txtIdProveedor.getText().isEmpty() && this.txtNombre.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingrese el ID o Nombre del proveedor");
+            } else {
+                this.consultarActual();
+            }
         } catch (Exception ex) {
             Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -302,13 +327,13 @@ public class FrmProveedor extends javax.swing.JFrame {
     private void btnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseClicked
         try {
             this.registrar();
+            this.mostrarTablaDeTodosLosProveedores();
         } catch (Exception ex) {
             Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRegistrarMouseClicked
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -320,6 +345,7 @@ public class FrmProveedor extends javax.swing.JFrame {
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
         try {
             this.actualizar();
+            this.mostrarTablaDeTodosLosProveedores();
         } catch (Exception ex) {
             Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -328,18 +354,22 @@ public class FrmProveedor extends javax.swing.JFrame {
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         try {
             this.eliminar();
+            this.mostrarTablaDeTodosLosProveedores();
         } catch (Exception ex) {
             Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnActualizarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTelefonoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarTelefonoActionPerformed
 
     private void btnActualizarTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarTelefonoMouseClicked
         try {
-            this.actalizarTelefono();
+            if (this.ValidarCamposTelefono() && (this.txtNombre.getText().isEmpty() == false)) {
+                this.actualizarTelefono();
+            } else {
+                JOptionPane.showMessageDialog(this, "Ingrese los datos del requeridos");
+            }
         } catch (Exception ex) {
             Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error en boton Actualizar telefono");
@@ -348,7 +378,12 @@ public class FrmProveedor extends javax.swing.JFrame {
 
     private void btnRegistrarTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarTelefonoMouseClicked
         try {
-            this.registrarTelefono();
+            if (this.ValidarCamposTelefono() && (this.txtNombre.getText().isEmpty() == false)) {
+                this.registrarTelefono();
+            } else {
+                JOptionPane.showMessageDialog(this, "Ingrese los datos del requeridos");
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -356,7 +391,12 @@ public class FrmProveedor extends javax.swing.JFrame {
 
     private void btnEliminarTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarTelefonoMouseClicked
         try {
-            this.eliminarTelefono();
+            if (this.ValidarCamposTelefono() && (this.txtNombre.getText().isEmpty() == false)) {
+                this.eliminarTelefono();
+            } else {
+                JOptionPane.showMessageDialog(this, "Ingrese los datos del requeridos");
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -382,7 +422,12 @@ public class FrmProveedor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblExtension;
+    private javax.swing.JLabel lblLada;
+    private javax.swing.JLabel lblNumero;
+    private javax.swing.JLabel lblProveedores;
+    private javax.swing.JLabel lblTipoTelefono;
     private javax.swing.JTable tablaProveedor;
     private javax.swing.JTextField txtCalle;
     private javax.swing.JTextField txtCiudad;
@@ -404,15 +449,20 @@ public class FrmProveedor extends javax.swing.JFrame {
     BLL_ProveedorTelefono bbl_ProveedorTelefono = new BLL_ProveedorTelefono();
     ProveedorTelefono proveedorTelefono = null;
     private Connection dbCon;
-
+    private int tipoTelefonoActual = 0;//donde: 0=tipoTelefono_1; 1=tipoTelefono_2; 2=tipoTelefono_3
     testUniversity u = new testUniversity();
     LinkedList listaTelefonoProveedor = new LinkedList();
-    private String idProveedorTelefono;
+    List<Proveedor> listaProveedorProveedores = new ArrayList<Proveedor>();
+
+    private String idProveedorTelefonoActual;
+    private int indiceComboxActual = 0;
 
     public FrmProveedor() {
+
         initComponents();
         this.Init();
         this.crearComboBoxdProveedorTelefono();
+        mostrarTablaDeTodosLosProveedores();
     }
 
     /**
@@ -458,9 +508,8 @@ public class FrmProveedor extends javax.swing.JFrame {
         try {
             proveedor = new Proveedor();
             dbCon = DbUtil.getInstance().getConnection();
-            this.crearComboBoxdProveedorTelefono();
+            crearComboBoxdProveedorTelefono();
         } catch (Exception e) {
-
         }
     }
 
@@ -486,15 +535,12 @@ public class FrmProveedor extends javax.swing.JFrame {
 
     private boolean ValidarCampos() {
         boolean validar = false;
-
         if (!this.txtNombre.getText().isEmpty()
                 && !this.txtCalle.getText().isEmpty()
                 && !this.txtColonia.getText().isEmpty()
                 && !this.txtCiudad.getText().isEmpty()
                 && !this.txtCodigoPostal.getText().isEmpty()) {
-
             validar = true;
-
         } else {
             validar = false;
         }
@@ -503,7 +549,6 @@ public class FrmProveedor extends javax.swing.JFrame {
 
     private boolean ValidarCamposTelefono() {
         boolean validar = false;
-
         if (!this.txtLada.getText().isEmpty() && !this.txtNumero.getText().isEmpty()) {
             validar = true;
         } else {
@@ -523,11 +568,10 @@ public class FrmProveedor extends javax.swing.JFrame {
             proveedor.setColonia(this.txtColonia.getText());
             proveedor.setCiudad(this.txtCiudad.getText());
             proveedor.setCodigoPostal(Integer.parseInt(this.txtCodigoPostal.getText()));
-            //  a.setActivo(Integer.parseInt(this.txtActivo.getText()));
 
             verificador = true;
         } else {
-            JOptionPane.showMessageDialog(this, "Completar campos vacios");
+            JOptionPane.showMessageDialog(this, "Llenar los datos del Proveedor");
             verificador = false;
         }
         return verificador;
@@ -541,9 +585,10 @@ public class FrmProveedor extends javax.swing.JFrame {
         if (this.ValidarCamposTelefono()) {
             System.out.println(this.txtNumero.getText());
             proveedorTelefono.setIdProveedor(idProveedorAux);// se inserta el idProveedor reuperado en el Telefono
+            proveedorTelefono.setIdProveedorTelefono(this.idProveedorTelefonoActual);
             proveedorTelefono.setLada(this.txtLada.getText());
             proveedorTelefono.setNumero(this.txtNumero.getText());
-            proveedorTelefono.setTipoTelefono(indiceCombox + 1);//aqui se le agrega el tipo de telefono sleccionado
+            proveedorTelefono.setTipoTelefono(this.indiceComboxActual + 1);//se le agrega el tipo de telefono sleccionado actualmente
             if (this.txtExtension.getText().isEmpty() == true) {
                 proveedorTelefono.setExtension(0);
             } else {
@@ -551,7 +596,31 @@ public class FrmProveedor extends javax.swing.JFrame {
             }
             verificador = true;
         } else {
-            JOptionPane.showMessageDialog(this, "Completar campos vacios");
+            //JOptionPane.showMessageDialog(this, "Llenar los datos del Telefono");
+            verificador = false;
+        }
+        return verificador;
+    }
+
+    private boolean LlenarAtributosTelefonoAinsertar() {
+        boolean verificador = false;
+        proveedorTelefono = new ProveedorTelefono();
+        int indiceCombox = this.jComboxTelefono.getSelectedIndex();
+
+        if (this.ValidarCamposTelefono()) {
+            System.out.println(this.txtNumero.getText());
+            proveedorTelefono.setIdProveedor(idProveedorAux);//idProveedorAux reuperado en el insercion del proveedor
+            proveedorTelefono.setLada(this.txtLada.getText());
+            proveedorTelefono.setNumero(this.txtNumero.getText());
+            proveedorTelefono.setTipoTelefono(indiceCombox + 1);//se agrega el tipo de telefono sleccionado
+            if (this.txtExtension.getText().isEmpty() == true) {
+                proveedorTelefono.setExtension(0);
+            } else {
+                proveedorTelefono.setExtension(Integer.parseInt(this.txtExtension.getText()));
+            }
+            verificador = true;
+        } else {
+            //JOptionPane.showMessageDialog(this, "Llenar los datos del Telefono");
             verificador = false;
         }
         return verificador;
@@ -560,15 +629,12 @@ public class FrmProveedor extends javax.swing.JFrame {
     private void registrar() throws Exception {
         bbl_ProveedorTelefono = new BLL_ProveedorTelefono();
         int verificador = 0;
-
         if (this.LlenarAtributos()) {
-
             idProveedorAux = u.ProveedorAdd(proveedor);//aqui recupero mi id del procedimiento
             System.out.println("id recuperado = " + this.idProveedorAux);
             if (this.LlenarAtributosTelefono()) {
                 verificador = bbl_ProveedorTelefono.AddToDataBaseProveedorTelefono(dbCon, proveedorTelefono);
             }
-
             if (idProveedorAux != null && verificador != 0) {
                 JOptionPane.showMessageDialog(this, "Datos registradados");
                 // this.LimpiarCampos();
@@ -576,7 +642,6 @@ public class FrmProveedor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "No se pudo registrar");
             }
         }
-
     }
 
     private void registrarTelefono() throws Exception {
@@ -585,7 +650,7 @@ public class FrmProveedor extends javax.swing.JFrame {
         if (indiceCombox + 1 == 1) {
             JOptionPane.showMessageDialog(this, "El telefono ya existe");
         } else {
-            if (this.LlenarAtributosTelefono()) {
+            if (this.LlenarAtributosTelefonoAinsertar()) {
                 verificador = bbl_ProveedorTelefono.AddToDataBaseProveedorTelefono(dbCon, proveedorTelefono);
                 if (verificador != 0) {
                     JOptionPane.showMessageDialog(this, "Telefono registradado");
@@ -627,30 +692,173 @@ public class FrmProveedor extends javax.swing.JFrame {
         }
     }
 
-    
-    
-    
-    public void actalizarTelefono() throws Exception {
+    private boolean existeProvedorPorID() throws Exception {
+        boolean resultado = false;
+        testuniversity = new testUniversity();
+        String idProveedorEnLinea;
+        idProveedorEnLinea = this.txtIdProveedor.getText();
+        Proveedor proveedorPorId = new Proveedor();
+        if (idProveedorEnLinea.isEmpty() != true) {
+            if (idProveedorEnLinea.length() == 8) {
+                proveedorPorId = testuniversity.ProveedorQry(idProveedorEnLinea);
+                if (proveedorPorId.getIdProveedor() != null) {
+                    resultado = true;
+                    this.proveedor = proveedorPorId;
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Ingrese un Id Valido");
+            }
+        }
+        return resultado;
+    }
+
+    private boolean existeProvedorPorNombre() throws Exception {
+        boolean resultado = false;
+        testuniversity = new testUniversity();
+        String nombreProvedorEnLinea;
+        nombreProvedorEnLinea = this.txtNombre.getText();
+        System.out.println("this.txtNombre.getText():  " + this.txtNombre.getText());
+        System.out.println("nombreProvedorEnLinea:  " + nombreProvedorEnLinea);
+        Proveedor proveedorPorNombre = new Proveedor();
+
+        proveedorPorNombre = testuniversity.ProveedorQryPorNombre(nombreProvedorEnLinea);
+        if (proveedorPorNombre.getIdProveedor() != null) {
+            resultado = true;
+            this.proveedor = proveedorPorNombre;
+        }
+        return resultado;
+    }
+
+    private void consultarActual() throws Exception {
+        proveedor = new Proveedor();
+        listaTelefonoProveedor = new LinkedList();
+        testuniversity = new testUniversity();
+        System.out.println(this.txtIdProveedor.getText());
+        System.out.println(this.proveedor);
+        if ((existeProvedorPorNombre() == true) || (this.existeProvedorPorID() == true)) {
+            System.out.println("Entra en existeProveedor");
+            this.txtNombre.setText(proveedor.getNombre());
+            this.txtCalle.setText(proveedor.getCalle());
+            this.txtColonia.setText(proveedor.getColonia());
+            this.txtCiudad.setText(proveedor.getCiudad());
+            this.txtCodigoPostal.setText(String.valueOf(proveedor.getCodigoPostal()));
+            this.idProveedorAux = proveedor.getIdProveedor(); //obtiene el id del proveedor
+            System.out.println("idProveedor Actual:  " + proveedor.getIdProveedor());
+            this.obtenerTodosLosTelefonosProveedor();
+
+            // System.out.println("tamanio listaNumerosTefonos:  " + listaTelefonoProveedor.size());
+            for (int i = 0; i < this.listaTelefonoProveedor.size(); i++) {
+                proveedorTelefono = new ProveedorTelefono();
+                proveedorTelefono = (ProveedorTelefono) this.listaTelefonoProveedor.get(i);
+                System.out.println(i + " Tipo Telefono: " + proveedorTelefono.getTipoTelefono() + " Lada: " + proveedorTelefono.getLada() + " Extension: " + proveedorTelefono.getExtension() + " Numero: " + proveedorTelefono.getNumero());
+            }
+
+            System.out.println("tipoTelefonoActual:  " + tipoTelefonoActual);
+            mostrarNumerosTelefono();//despues de mostrar el telefono por default            
+        } else {
+            JOptionPane.showMessageDialog(this, "Id o nombre de usuario incorrecto");
+        }
+    }
+
+    public void mostrarNumerosTelefono() {
+        if (listaTelefonoProveedor.size() > 0) {
+            if (listaTelefonoProveedor.size() == 3) {
+                proveedorTelefono = new ProveedorTelefono();
+                proveedorTelefono = (ProveedorTelefono) this.listaTelefonoProveedor.get(0);//era 1
+                this.txtLada.setText(proveedorTelefono.getLada());
+                this.txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                this.txtNumero.setText(proveedorTelefono.getNumero());
+            } else if (listaTelefonoProveedor.size() == 2) {
+                proveedorTelefono = new ProveedorTelefono();
+                proveedorTelefono = (ProveedorTelefono) this.listaTelefonoProveedor.get(0);
+                this.txtLada.setText(proveedorTelefono.getLada());
+                this.txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                this.txtNumero.setText(proveedorTelefono.getNumero());
+            } else {
+                proveedorTelefono = new ProveedorTelefono();
+                proveedorTelefono = (ProveedorTelefono) this.listaTelefonoProveedor.get(0);
+                this.txtLada.setText(proveedorTelefono.getLada());
+                this.txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                this.txtNumero.setText(proveedorTelefono.getNumero());
+            }
+            System.out.println("idProveedorTelefono En la consulta: " + proveedorTelefono.getIdProveedorTelefono());
+            this.idProveedorTelefonoActual = proveedorTelefono.getIdProveedorTelefono();
+        }
+
+        jComboxTelefono.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String idAux = "";
+                System.out.println(jComboxTelefono.getSelectedItem().toString());
+                System.out.println(jComboxTelefono.getSelectedIndex());
+                tipoTelefonoActual = jComboxTelefono.getSelectedIndex();
+                establecerIndiceComboBoxActual(jComboxTelefono.getSelectedIndex());
+                System.out.println("tipoTelefonoActual actionPerformed:  " + tipoTelefonoActual);
+                if (listaTelefonoProveedor.size() == 3) {
+                    if (jComboxTelefono.getSelectedIndex() == 0) {
+                        proveedorTelefono = (ProveedorTelefono) listaTelefonoProveedor.get(0);//era 1
+                        txtLada.setText(proveedorTelefono.getLada());
+                        txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                        txtNumero.setText(proveedorTelefono.getNumero());
+                    }
+                    if (jComboxTelefono.getSelectedIndex() == 1) {
+                        proveedorTelefono = (ProveedorTelefono) listaTelefonoProveedor.get(1);//era 2
+                        txtLada.setText(proveedorTelefono.getLada());
+                        txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                        txtNumero.setText(proveedorTelefono.getNumero());
+                    }
+                    if (jComboxTelefono.getSelectedIndex() == 2) {
+                        proveedorTelefono = (ProveedorTelefono) listaTelefonoProveedor.get(2);//era 0
+                        txtLada.setText(proveedorTelefono.getLada());
+                        txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                        txtNumero.setText(proveedorTelefono.getNumero());
+                    }
+                }
+                if (listaTelefonoProveedor.size() == 2) {
+                    if (jComboxTelefono.getSelectedIndex() == 0) {
+                        proveedorTelefono = (ProveedorTelefono) listaTelefonoProveedor.get(0);
+                        txtLada.setText(proveedorTelefono.getLada());
+                        txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                        txtNumero.setText(proveedorTelefono.getNumero());
+                    }
+                    if (jComboxTelefono.getSelectedIndex() == 1) {
+                        proveedorTelefono = (ProveedorTelefono) listaTelefonoProveedor.get(1);
+                        txtLada.setText(proveedorTelefono.getLada());
+                        txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                        txtNumero.setText(proveedorTelefono.getNumero());
+                    }
+                }
+                if (listaTelefonoProveedor.size() == 1) {
+                    if (jComboxTelefono.getSelectedIndex() == 0) {
+                        proveedorTelefono = (ProveedorTelefono) listaTelefonoProveedor.get(0);
+                        txtLada.setText(proveedorTelefono.getLada());
+                        txtExtension.setText(String.valueOf(proveedorTelefono.getExtension()));
+                        txtNumero.setText(proveedorTelefono.getNumero());
+                    }
+                }
+                idProveedorTelefonoActual = proveedorTelefono.getIdProveedorTelefono();
+                System.out.println("idProveedorTelefono CAMBIANDO: " + proveedorTelefono.getIdProveedorTelefono());
+                establecerIdProveedorTelefono(proveedorTelefono.getIdProveedorTelefono());
+            }
+        });
+
+    }
+
+    public void establecerIdProveedorTelefono(String id) {
+        this.idProveedorTelefonoActual = id;
+    }
+
+    public void establecerIndiceComboBoxActual(int indice) {
+        this.indiceComboxActual = indice;
+    }
+
+    public void actualizarTelefono() throws Exception {
         int verificador = 0;
         int indiceCombox = this.jComboxTelefono.getSelectedIndex();
-        System.out.println("indiceCombox:   " + indiceCombox);
-       
         bbl_ProveedorTelefono = new BLL_ProveedorTelefono();
         proveedorTelefono = new ProveedorTelefono();
+
         this.proveedorTelefono = (ProveedorTelefono) (this.listaTelefonoProveedor.get(indiceCombox));
-        
-//aqui creo que no se le esta enviando el idTelefonoProveedor que se va a modificar
-        ProveedorTelefono proveedorTest = new ProveedorTelefono();//apenas se creo
-        proveedorTest = (ProveedorTelefono) this.listaTelefonoProveedor.get(indiceCombox);
-        //el indice del test
-        // System.out.println("this.proveedorTelefono.getTipoTelefono():  "+test.getTipoTelefono());
-        // System.out.println("(this.listaTelefonoProveedor.get(indiceCombox))  "+ this.listaTelefonoProveedor.get(indiceCombox).toString());
-        System.out.println("tamanio listaTelefonoProveedor:  " + this.listaTelefonoProveedor.size());
-        System.out.println("Tipo de telefono Seleccionado:  "+proveedorTest.getTipoTelefono());
-        System.out.println("Lada del telefono Seleccionado:  "+proveedorTest.getLada());
-        System.out.println("Extension del telefono Seleccionado:  "+proveedorTest.getExtension());
-        System.out.println("Numero telefono Seleccionado:  "+proveedorTest.getNumero());
-        
         proveedorTelefono.setIdProveedor(proveedor.getIdProveedor());
         if (this.LlenarAtributosTelefono()) {
             verificador = bbl_ProveedorTelefono.updateProveedorTelefonoDatabase(dbCon, proveedorTelefono);
@@ -661,20 +869,18 @@ public class FrmProveedor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Actualizacion Fallido");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Verifica tus Datos");
+            JOptionPane.showMessageDialog(this, "Llenar los datos del Telefono");
         }
     }
 
     public void actualizar() throws Exception {
         int verificador = 0;
+
         bbl_Proveedor = new BLL_Proveedor();
         proveedor.setIdProveedor(this.idProveedorAux);
-
         if (this.LlenarAtributos()) {
             verificador = bbl_Proveedor.updateProveedorDataBase(dbCon, proveedor);
-
             System.out.println("probabdo = " + verificador);
-
             if (verificador == 1) {
                 JOptionPane.showMessageDialog(this, "Datos Actualizados");
             } else {
@@ -688,18 +894,30 @@ public class FrmProveedor extends javax.swing.JFrame {
     private void eliminar() throws Exception {
         bbl_Proveedor = new BLL_Proveedor();
         int verificadorProveedor, verificadorTelefono;
-        // alumno.setMatricula(this.txtMatricula.getText());
         proveedor.setIdProveedor(idProveedorAux);
         verificadorTelefono = bbl_ProveedorTelefono.deleteProveedorTelefonoDatabase(dbCon, proveedor);
         verificadorProveedor = bbl_Proveedor.deleteProveedorDatabase(dbCon, proveedor);
-        if (verificadorTelefono == 1 && verificadorProveedor == 1) {
-            JOptionPane.showMessageDialog(this, "Proveedor Eliminado");
+        if (this.LlenarAtributos()) {
+            if (verificadorProveedor == 1 && verificadorProveedor == 1) {
+                JOptionPane.showMessageDialog(this, "Proveedor Eliminado");
+            } else {
+                JOptionPane.showMessageDialog(this, "Eliminacion Fallida, Proveedor no Eliminado");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Eliminacion Fallida, Proveedor no Eliminado");
+            JOptionPane.showMessageDialog(this, "Verifica tus datos");
         }
     }
 
     private void obtenerTodosLosTelefonosProveedor() {
+        try {
+            BLL_ProveedorTelefono bbl_ProveedorTelefono = new BLL_ProveedorTelefono();
+            this.listaTelefonoProveedor.addAll(u.ProveedorTelefonoQry(idProveedorAux));
+        } catch (Exception e) {
+            System.out.println("Problemas al obtener todosd los Telefonos proveedores ");
+        }
+    }
+
+    private void obtenerTodosLosTelefonosProveedorActual() {
         try {
             BLL_ProveedorTelefono bbl_ProveedorTelefono = new BLL_ProveedorTelefono();
             this.listaTelefonoProveedor.addAll(u.ProveedorTelefonoQry(idProveedorAux));
@@ -714,26 +932,43 @@ public class FrmProveedor extends javax.swing.JFrame {
         int verificador = 0, indice = 0;
 
         String indiceCombox = this.jComboxTelefono.getSelectedItem().toString();
-        for (int i = 0; i < this.listaTelefonoProveedor.size(); i++) {
-            if (indiceCombox.equals("Personal")) {
-                indice = this.obtenerIndiceAeliminar("Personal");
-            } else if (indiceCombox.equals("Casa")) {
-                indice = this.obtenerIndiceAeliminar("Casa");
-            } else if (indiceCombox.equals("Oficina")) {
-                indice = this.obtenerIndiceAeliminar("Oficina");
+        if (this.LlenarAtributosTelefono()) {
+            verificador = bbl_ProveedorTelefono.deleteTelefonoDatabase(dbCon, proveedorTelefono);
+            System.out.println("verificador: " + verificador);
+            if (verificador == 1) {
+                JOptionPane.showMessageDialog(this, "Telefono eliminado exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(this, "Fallo la eliminacion del telefono");
             }
-        }
-
-        proveedorTelefono = (ProveedorTelefono) this.listaTelefonoProveedor.get(indice);
-
-        //    proveedorTelefono = (ProveedorTelefono) this.listaTelefonoProveedor.get(indiceCombox);
-        verificador = bbl_ProveedorTelefono.deleteTelefonoDatabase(dbCon, proveedorTelefono);
-        if (verificador != 0) {
-            JOptionPane.showMessageDialog(this, "Telefono Eliminado Exitosamente");
-            this.jComboxTelefono.removeItemAt(indice);
-            this.listaTelefonoProveedor.remove(indice);
         } else {
-            JOptionPane.showMessageDialog(this, "Eliminacion Fallida, Telefono No Eliminado");
+            JOptionPane.showMessageDialog(this, "Llenar los datos del Telefono");
+        }
+    }
+
+    public void mostrarTablaDeTodosLosProveedores() {
+        try {
+            bbl_Proveedor = new BLL_Proveedor();
+            this.listaProveedorProveedores = bbl_Proveedor.QueryAllProveedorDataBase(dbCon, idProveedorAux);
+            DefaultTableModel modelo = new DefaultTableModel();
+            Object[] object = new Object[2];
+
+            // System.out.println("proveedores.size:  " + listaProveedorProveedores.size());
+            modelo.addColumn("ID del proveedor");
+            modelo.addColumn("Nombre del proveedor");
+
+            this.tablaProveedor.setModel(modelo);
+            if (listaProveedorProveedores.size() > 0) {
+                for (int i = 0; i < listaProveedorProveedores.size(); i++) {
+                    Proveedor provedorLocal = new Proveedor();
+                    provedorLocal = ((Proveedor) listaProveedorProveedores.get(i));
+                    object[0] = provedorLocal.getIdProveedor().substring(0, 8);
+                    object[1] = provedorLocal.getNombre();
+                    //System.out.println("idProveedor_subString: " + provedorLocal.getIdProveedor().substring(0, 8));
+                    modelo.addRow(object);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(FrmProveedor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

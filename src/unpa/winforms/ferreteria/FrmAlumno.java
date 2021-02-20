@@ -160,7 +160,7 @@ public class FrmAlumno extends javax.swing.JFrame {
 
     private void btnInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertarMouseClicked
         try {
-            this.registrar();
+            // this.registrar();
         } catch (Exception ex) {
             Logger.getLogger(FrmAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -172,7 +172,7 @@ public class FrmAlumno extends javax.swing.JFrame {
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
         try {
-            this.actualizar();
+            //this.actualizar();
         } catch (Exception ex) {
             Logger.getLogger(FrmAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -184,7 +184,7 @@ public class FrmAlumno extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         try {
-            this.eliminarLogicamente();
+            //this.eliminarLogicamente();
         } catch (Exception ex) {
             Logger.getLogger(FrmAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -198,7 +198,7 @@ public class FrmAlumno extends javax.swing.JFrame {
 
 //   System.out.println("probando la consulta");
         try {
-            this.consultar();
+            //   this.consultar();
             //     System.out.println(testuniversity.AlumnoQry(this.alumno).getNombre());
         } catch (Exception ex) {
             Logger.getLogger(FrmAlumno.class.getName()).log(Level.SEVERE, null, ex);
@@ -389,8 +389,8 @@ public class FrmAlumno extends javax.swing.JFrame {
 
     private void eliminarLogicamente() throws Exception {
         int verificador;
-       // alumno.setMatricula(this.txtMatricula.getText());
-            alumno.setMatricula(this.matriculaAux);
+        // alumno.setMatricula(this.txtMatricula.getText());
+        alumno.setMatricula(this.matriculaAux);
         if (this.checBoxActivo.isSelected() == true) {
             alumno.setActivo(1);
         } else {

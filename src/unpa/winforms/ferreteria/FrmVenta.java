@@ -23,8 +23,6 @@ import unpa.winforms.ferreteria.util.DbUtil;
  */
 public class FrmVenta extends javax.swing.JFrame {
 
-   
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,6 +195,11 @@ public class FrmVenta extends javax.swing.JFrame {
         jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 160, 30));
 
         jButton7.setText("Injsertar Detalle Venta");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 160, 30));
 
         jButton8.setText("Actualizar Detalle Venta");
@@ -285,12 +288,12 @@ public class FrmVenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBoxManoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxManoMouseClicked
-        
+
     }//GEN-LAST:event_jCheckBoxManoMouseClicked
 
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
         try {
-            this.obtenerListaProductos();
+            //this.obtenerListaProductos();
         } catch (Exception ex) {
             Logger.getLogger(FrmVenta.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -316,7 +319,10 @@ public class FrmVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseClicked
 
-    
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
@@ -375,36 +381,35 @@ public class FrmVenta extends javax.swing.JFrame {
     private javax.swing.JTextField txtSubTotal;
     // End of variables declaration//GEN-END:variables
     private Connection dbCon;
-    private Cliente  cliente;
-    BLL_Producto bll_producto=null;
-     Calendar fecha = new GregorianCalendar();
-     int ano = fecha.get(Calendar.YEAR);
-     int mes = Calendar.DAY_OF_WEEK;
-     int dia = fecha.get(Calendar.DAY_OF_MONTH);
-     private  String fechaActual=String.valueOf(dia)+String.valueOf(mes)+String.valueOf(ano);
-     
-     /**
+    private Cliente cliente;
+    BLL_Producto bll_producto = null;
+    Calendar fecha = new GregorianCalendar();
+    int ano = fecha.get(Calendar.YEAR);
+    int mes = Calendar.DAY_OF_WEEK;
+    int dia = fecha.get(Calendar.DAY_OF_MONTH);
+    private String fechaActual = String.valueOf(dia) + String.valueOf(mes) + String.valueOf(ano);
+
+    /**
      * Creates new form FrmVenta
      */
     public FrmVenta() {
         initComponents();
         this.Init();
-        
+
     }
-    
-      public void Init() {
+
+    public void Init() {
         try {
             producto = new Producto();
             cliente = new Cliente();
             dbCon = DbUtil.getInstance().getConnection();
-            
+
         } catch (Exception e) {
             System.out.println("eroor en el metodo Init");
         }
     }
-    
-    
-/**
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -413,7 +418,7 @@ public class FrmVenta extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-         
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -440,55 +445,44 @@ public class FrmVenta extends javax.swing.JFrame {
         });
     }
 
-    LinkedList <Producto> listaProductos=new LinkedList <Producto>();
-    Producto producto =null;
-    
-    
-    
-    
-    
-    
+    LinkedList<Producto> listaProductos = new LinkedList<Producto>();
+    Producto producto = null;
 
-    private void obtenerListaProductos() throws Exception{
-        bll_producto =new BLL_Producto();
-        if(this.jCheckBoxMano.isSelected()){
-            this.listaProductos=this.bll_producto.QueryAllProductoDataBase(dbCon, 1);
-            
+    private void obtenerListaProductos() throws Exception {
+        bll_producto = new BLL_Producto();
+        if (this.jCheckBoxMano.isSelected()) {
+            this.listaProductos = this.bll_producto.QueryAllProductoDataBase(dbCon, 1);
+
+        } else if (this.jCheckBoxSujecion.isSelected()) {
+            this.listaProductos = this.bll_producto.QueryAllProductoDataBase(dbCon, 2);
+        } else if (this.jCheckBoxTuberiasDeSujecion.isSelected()) {
+            this.listaProductos = this.bll_producto.QueryAllProductoDataBase(dbCon, 3);
+        } else if (this.jCheckBoxElectricidad.isSelected()) {
+            this.listaProductos = this.bll_producto.QueryAllProductoDataBase(dbCon, 4);
+        } else if (this.jCheckBoxCimponentesDiversos.isSelected()) {
+            this.listaProductos = this.bll_producto.QueryAllProductoDataBase(dbCon, 5);
         }
-        else if(this.jCheckBoxSujecion.isSelected()){
-           this.listaProductos=this.bll_producto.QueryAllProductoDataBase(dbCon, 2);
-        }
-        else if(this.jCheckBoxTuberiasDeSujecion.isSelected()){
-            this.listaProductos=this.bll_producto.QueryAllProductoDataBase(dbCon, 3);
-        }    
-        else if(this.jCheckBoxElectricidad.isSelected()){
-            this.listaProductos=this.bll_producto.QueryAllProductoDataBase(dbCon, 4);
-        }
-        else if(this.jCheckBoxCimponentesDiversos.isSelected()){
-            this.listaProductos=this.bll_producto.QueryAllProductoDataBase(dbCon, 5);
-        }
-        
-       
-       this.consultarTesis();
-       
-       System.out.println(this.tablaProductos.getValueAt(0,1));
+
+        this.consultarTesis();
+
+        System.out.println(this.tablaProductos.getValueAt(0, 1));
     }
 
-     private void consultarTesis(){
-       DefaultTableModel modelo=new DefaultTableModel();
-        Object [] object= new Object[10];
+    private void consultarTesis() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[] object = new Object[10];
         this.tablaProductos.setModel(modelo);
         modelo.addColumn("producto");
         modelo.addColumn("Precio");
-       modelo.addColumn("Proveedor");
-       modelo.addColumn("Existencia");
-       
-        for(int x=0;x<listaProductos.size();x++){
-            object[0]=listaProductos.get(x).getNombre();
-            object[1]=listaProductos.get(x).getPrecio();
-            object[2]=listaProductos.get(x).getMarca();
-            object[3]=listaProductos.get(x).getExistencia();
-        
+        modelo.addColumn("Proveedor");
+        modelo.addColumn("Existencia");
+
+        for (int x = 0; x < listaProductos.size(); x++) {
+            object[0] = listaProductos.get(x).getNombre();
+            object[1] = listaProductos.get(x).getPrecio();
+            object[2] = listaProductos.get(x).getMarca();
+            object[3] = listaProductos.get(x).getExistencia();
+
 //            if(listaProductos.get(x).isBeca()){
 //                object[3]="Si";
 //            }else{
@@ -499,10 +493,8 @@ public class FrmVenta extends javax.swing.JFrame {
 //            }else{
 //                object[4]="No";
 //            }
-        
-            modelo.addRow(object); 
-        }  
+            modelo.addRow(object);
+        }
     }
-
 
 }

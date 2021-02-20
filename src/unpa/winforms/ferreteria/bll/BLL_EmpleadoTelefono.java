@@ -18,7 +18,9 @@ import unpa.winforms.ferreteria.el.ProveedorTelefono;
  * @author chee <chee_unp@edu.mx>
  */
 public class BLL_EmpleadoTelefono {
-        public int  AddToDataBaseEmpleadoTelefono(Connection dbCon, EmpleadoTelefono empleadoTelefono) throws Exception {
+
+    //INSERTAR UN TELEFONO AL EMPLEADO
+    public int AddToDataBaseEmpleadoTelefono(Connection dbCon, EmpleadoTelefono empleadoTelefono) throws Exception {
         try {
             DAL_EmpleadoTelefono dal_empleadoTelefono = new DAL_EmpleadoTelefono(dbCon, empleadoTelefono);
             return dal_empleadoTelefono.addEmpleadoTelefonoToDataBase();
@@ -26,27 +28,28 @@ public class BLL_EmpleadoTelefono {
             throw ex;
         }
     }
-        
-       
- public List<EmpleadoTelefono> QueryEmpleadoTelefonosDataBase(Connection dbCon,String idEmpleado) throws Exception {
+
+    //CONSULTAR EL TELEFONO DE UN EMPLEADO
+    public List<EmpleadoTelefono> QueryEmpleadoTelefonosDataBase(Connection dbCon, String idEmpleado) throws Exception {
         try {
             DAL_EmpleadoTelefono dal_empleadoTelefono = new DAL_EmpleadoTelefono(dbCon, null);
             return dal_empleadoTelefono.queryProveedorTelefonosToDatabase(idEmpleado);
         } catch (Exception ex) {
             throw ex;
         }
- }
- 
- 
- public int updateEmpleadoTelefonoDatabase(Connection dbCon, EmpleadoTelefono empleadoTelefono) throws Exception {
+    }
+
+    //ACTUALIZAR EL TELEFONO DE UN EMPLEADO
+    public int updateEmpleadoTelefonoDatabase(Connection dbCon, EmpleadoTelefono empleadoTelefono) throws Exception {
         try {
             DAL_EmpleadoTelefono dal_empleadoTelefono = new DAL_EmpleadoTelefono(dbCon, empleadoTelefono);
             return dal_empleadoTelefono.updateEmpleadoTelefonoToDataBase();
         } catch (Exception ex) {
             throw ex;
         }
- }
- 
+    }
+
+    //ELIMINAR EL TELEFONO DE UN EMPLEADO
     public int deleteEmpleadoTelefonoDatabase(Connection dbCon, Empleado empleado) throws Exception {
         try {
             DAL_EmpleadoTelefono dal_empleadoTelefono = new DAL_EmpleadoTelefono(dbCon, null);
@@ -54,10 +57,6 @@ public class BLL_EmpleadoTelefono {
         } catch (Exception ex) {
             throw ex;
         }
-    } 
+    }
 
-
-
-
-    
 }

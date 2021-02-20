@@ -13,7 +13,8 @@ import unpa.winforms.ferreteria.el.Empleado;
  *
  * @author chee <chee_unp@edu.mx>
  */
-public class BLL_Empleado {  
+public class BLL_Empleado {
+
     //INSERTAR UN EMPLEADO
     public String AddToDataBaseEmpleado(Connection dbCon, Empleado empleado) throws Exception {
         try {
@@ -22,9 +23,10 @@ public class BLL_Empleado {
         } catch (Exception ex) {
             throw ex;
         }
-    } 
+    }
+
     //CONSULTAR TABLA EMPLEADO
-    public Empleado QueryDataBase(Connection dbCon, String  idEmpleado) throws Exception {
+    public Empleado QueryDataBase(Connection dbCon, String idEmpleado) throws Exception {
         try {
             DAL_Empleado dal_empleado = new DAL_Empleado(dbCon, null);
             return dal_empleado.queryEmpleadoToDatabase(idEmpleado);
@@ -32,7 +34,8 @@ public class BLL_Empleado {
             throw ex;
         }
     }
-    
+
+    //ACTUALIZAR TABLA EMPLEADO
     public int updateEmpleadoDataBase(Connection dbCon, Empleado empleado) throws Exception {
         try {
             DAL_Empleado dal_empleado = new DAL_Empleado(dbCon, empleado);
@@ -41,7 +44,8 @@ public class BLL_Empleado {
             throw ex;
         }
     }
-    
+
+    //ELIMINAR EMPLEADO
     public int deleteEmpleadoDatabase(Connection dbCon, Empleado empleado) throws Exception {
         try {
             DAL_Empleado dal_empleado = new DAL_Empleado(dbCon, empleado);

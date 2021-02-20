@@ -5,6 +5,11 @@
  */
 package unpa.winforms.ferreteria;
 
+import java.util.LinkedList;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author chee <chee_unp@edu.mx>
@@ -67,6 +72,11 @@ public class FrmConsultaProveedor extends javax.swing.JDialog {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 470, 210));
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAceptarMouseClicked(evt);
+            }
+        });
         getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
 
         btnCancelar.setText("Cancelar");
@@ -74,6 +84,10 @@ public class FrmConsultaProveedor extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
+
+    }//GEN-LAST:event_btnAceptarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,4 +139,5 @@ public class FrmConsultaProveedor extends javax.swing.JDialog {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable tablaProveedores;
     // End of variables declaration//GEN-END:variables
+
 }

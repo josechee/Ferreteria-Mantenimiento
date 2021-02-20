@@ -32,13 +32,13 @@ public class UNPAWinformsFerreteria {
         ProveedorTelefono Telefono1 = new ProveedorTelefono();
         String idProveedor;
 
-        proveedor.setNombre("FERRE_CHEE");
+        proveedor.setNombre("FERRE DEBIAN");
         /**
          * *Tabla direccion*
          */
-        proveedor.setCalle("Guadalupe Estrada");
-        proveedor.setColonia("San Antonio");
-        proveedor.setCiudad("CMDX");
+        proveedor.setCalle("App");
+        proveedor.setColonia("Contenedor");
+        proveedor.setCiudad("Docker");
         proveedor.setCodigoPostal(68400);
         //todo esto para insertar un nuevo proveedor y eliminar ello
         idProveedor = u.ProveedorAdd(proveedor);//toma el idProveedor que se inserto para poder insertar su telefono con su id
@@ -53,28 +53,27 @@ public class UNPAWinformsFerreteria {
 //     /*INSERTAR EL PRIMER TELEFONO DEL PROVEEDOR*/
         Telefono1.setIdProveedor(idProveedor);
         Telefono1.setTipoTelefono(proveedor.getTelefonoPersonal());
-        Telefono1.setLada("044");
+        Telefono1.setLada("01");
         Telefono1.setExtension(0);
-        Telefono1.setNumero("5529674021");
+        Telefono1.setNumero("1112967402");
         System.out.println(u.ProveedorTelefonoAdd(Telefono1));
 
 //        /*INSERTAR EL SEGUNDO TELEFONO DEL PROVEEDOR*/
         Telefono1.setIdProveedor(idProveedor);
         Telefono1.setTipoTelefono(proveedor.getTelefonoCasa());
-        Telefono1.setLada("045");
+        Telefono1.setLada("02");
         Telefono1.setExtension(0);
-        Telefono1.setNumero("54296741");
+        Telefono1.setNumero("2222967431");
         System.out.println(u.ProveedorTelefonoAdd(Telefono1));
 
 //        /*INSERTAR EL TERCER TELEFONO DEL PROVEEDOR*/
-        Telefono1.setIdProveedor(idProveedor);
+        /*Telefono1.setIdProveedor(idProveedor);
         Telefono1.setTipoTelefono(proveedor.getTelefonoOficina());
         Telefono1.setLada("045");
         Telefono1.setExtension(3);
         Telefono1.setNumero("54296989");
-
         System.out.println(u.ProveedorTelefonoAdd(Telefono1));
-
+         */
 //       
 //       
         // u.PoveedorTelefonoDelete(Telefono1);/*Primero se elimina telefonoProveedor [por su idProveedor]*/

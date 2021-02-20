@@ -15,7 +15,8 @@ import unpa.winforms.ferreteria.el.Producto;
  * @author chee <chee_unp@edu.mx>
  */
 public class BLL_Producto {
-    public  LinkedList<Producto> QueryAllProductoDataBase(Connection dbCon, int tipoProducto) throws Exception {
+
+    public LinkedList<Producto> QueryAllProductoDataBase(Connection dbCon, int tipoProducto) throws Exception {
         try {
             DaL_Producto dal_producto = new DaL_Producto(dbCon, null);
             return (LinkedList<Producto>) dal_producto.queryProductosToDatabase(tipoProducto);
@@ -24,7 +25,3 @@ public class BLL_Producto {
         }
     }
 }
-    
-    
-      
-

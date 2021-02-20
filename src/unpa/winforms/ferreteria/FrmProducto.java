@@ -14,7 +14,7 @@ import unpa.winforms.ferreteria.el.Producto;
  * @author chee <chee_unp@edu.mx>
  */
 public class FrmProducto extends javax.swing.JFrame {
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,15 +126,15 @@ public class FrmProducto extends javax.swing.JFrame {
     private Connection dbCon;
     private String idProductoAux;
     private String idProveedorAux;
-    
+
     /**
      * Creates new form FrmProducto
      */
     public FrmProducto() {
         initComponents();
-        
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -169,7 +169,7 @@ public class FrmProducto extends javax.swing.JFrame {
             }
         });
     }
-    
+
 //    public void Init() {
 //        try {
 //            proveedor = newEmpleado();
@@ -192,10 +192,4 @@ public class FrmProducto extends javax.swing.JFrame {
 //
 //
 //
-
-
-
-
-
-
 }

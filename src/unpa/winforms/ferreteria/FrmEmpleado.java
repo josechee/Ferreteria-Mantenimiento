@@ -358,7 +358,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
 
     private void btnInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertarMouseClicked
         try {
-            this.registrar();
+            // this.registrar();
         } catch (Exception ex) {
             Logger.getLogger(FrmEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -414,7 +414,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         try {
-            this.registrarTelefono();
+            //  this.registrarTelefono();
         } catch (Exception ex) {
             Logger.getLogger(FrmEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -422,7 +422,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
 
     private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
         try {
-            this.consultar();
+            //  this.consultar();
             this.txtExtension.setText("");
         } catch (Exception ex) {
             Logger.getLogger(FrmEmpleado.class.getName()).log(Level.SEVERE, null, ex);
@@ -431,7 +431,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
 
     private void btnActualizarTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarTelefonoMouseClicked
         try {
-            this.actalizarTelefono();
+            //   this.actalizarTelefono();
             this.txtExtension.setText("");
         } catch (Exception ex) {
             Logger.getLogger(FrmEmpleado.class.getName()).log(Level.SEVERE, null, ex);
@@ -440,7 +440,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
         try {
-            this.actualizar();
+            // this.actualizar();
             this.txtExtension.setText("");
         } catch (Exception ex) {
             Logger.getLogger(FrmEmpleado.class.getName()).log(Level.SEVERE, null, ex);
@@ -449,7 +449,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         try {
-            this.eliminar();
+            //  this.eliminar();
         } catch (Exception ex) {
             Logger.getLogger(FrmEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -771,7 +771,7 @@ public class FrmEmpleado extends javax.swing.JFrame {
         usuario = bbl_usuario.QueryUsuarioDataBase(dbCon, idUsuarioAux);
         this.txtUsuario.setText(usuario.getCuentaUsuario());
         this.txtContraseña.setText(usuario.getContraseña());
-        this.idUsuarioAux=usuario.getIdUsuario();
+        this.idUsuarioAux = usuario.getIdUsuario();
         this.empleadoTelefono = new EmpleadoTelefono();
         this.obtenerTodosLosTelefonosEmpleado();
 

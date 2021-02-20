@@ -17,7 +17,8 @@ import unpa.winforms.ferreteria.dal.DAL_Proveedor;
  * @author chee <chee_unp@edu.mx>
  */
 public class BLL_Proveedor {
-    
+
+    //AGREGAR UN NUEVO PROVEEDOR
     public String AddToDataBaseProveedor(Connection dbCon, Proveedor proveedor) throws Exception {
         try {
             DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, proveedor);
@@ -25,8 +26,9 @@ public class BLL_Proveedor {
         } catch (Exception ex) {
             throw ex;
         }
-    }    
+    }
     
+    //CONSULTAR  PROVEEDOR A PARTIR DEL NOMBRE INTRODUCIDO EN EL CAMPO NOMBRE EN LA INTERFAZ GRAFICA DEL USUARIO
     public Proveedor QueryProveedorForNameDataBase(Connection dbCon, String nombreProveedor) throws Exception {
         try {
             DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, null);
@@ -36,6 +38,7 @@ public class BLL_Proveedor {
         }
     }
     
+    //CONSULTAR PROVEEDOR A PARTIR DE SU ID, SIN ARGUMENTO
     public Proveedor QueryDataBase(Connection dbCon, Proveedor proveedor) throws Exception {
         try {
             DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, proveedor);
@@ -45,7 +48,8 @@ public class BLL_Proveedor {
         }
     }
     
-     public Proveedor QueryProveedorDataBase(Connection dbCon, String _idProveedor) throws Exception {
+    //CONSULTAR PROVEEDOR A PARTIR DE SU ID, CON ARGUMENTO
+    public Proveedor QueryProveedorDataBase(Connection dbCon, String _idProveedor) throws Exception {
         try {
             DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, null);
             return dal_proveedor.queryProveedorToDatabase(_idProveedor);
@@ -53,7 +57,8 @@ public class BLL_Proveedor {
             throw ex;
         }
     }
-    
+
+    //ELIMINAR PROVEEDOR A PARTIR DE SU ID
     public int deleteProveedorDatabase(Connection dbCon, Proveedor proveedor) throws Exception {
         try {
             DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, proveedor);
@@ -63,8 +68,8 @@ public class BLL_Proveedor {
         }
     }
     
-    
-    public List<Proveedor> QueryAllProveedorDataBase(Connection dbCon,String Matricula) throws Exception {
+    //OBTENER TODOS LOS PROVEEDORES EXISTENTES EN LA BASE DE DATOS
+    public List<Proveedor> QueryAllProveedorDataBase(Connection dbCon, String Matricula) throws Exception {
         try {
             DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, null);
             return dal_proveedor.queryAllProveedorToDatabase(null);
@@ -72,8 +77,9 @@ public class BLL_Proveedor {
             throw ex;
         }
     }
-    
-     public int updateProveedorDataBase(Connection dbCon, Proveedor proveedor) throws Exception {
+
+    //ACTUALIZAR PROVEEDOR, A PARTIR DE SU ID
+    public int updateProveedorDataBase(Connection dbCon, Proveedor proveedor) throws Exception {
         try {
             DAL_Proveedor dal_proveedor = new DAL_Proveedor(dbCon, proveedor);
             return dal_proveedor.updateProveedorDataBase();
@@ -81,9 +87,5 @@ public class BLL_Proveedor {
             throw ex;
         }
     }
-        
-    
 
-
-    
 }
